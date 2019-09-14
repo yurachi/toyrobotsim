@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Simulator
+﻿namespace Simulator
 {
     public class Executor : IExecutor
     {
@@ -15,7 +11,15 @@ namespace Simulator
 
         public void Execute(CommandType command, int x = -1, int y = -1, Direction d = Direction.NONE)
         {
+            switch (command)
+            {
+                case CommandType.PLACE:
+                    Unit.X = x;
+                    Unit.Y = y;
+                    Unit.Face = d;
+                    break;
 
+            }
         }
     }
 }
