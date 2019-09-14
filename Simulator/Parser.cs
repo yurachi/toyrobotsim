@@ -22,11 +22,17 @@ namespace Simulator
                 return CommandType.NOP;
             if (result != CommandType.PLACE && Unit.Face == Direction.NONE)
                 return CommandType.NOP;
-            if (result == CommandType.MOVE && ValidateMove())
-                return result;
-            if (result == CommandType.PLACE && splitCommand.Length == 2 && ParsePlaceParameters(splitCommand[1]))
-                return result;
-            return CommandType.NOP;
+            switch (result)
+            {
+                case CommandType.MOVE when ValidateMove():
+                    return result;
+                case CommandType.PLACE when splitCommand.Length == 2 && ParsePlaceParameters(splitCommand[1]):
+                    return result;
+                case CommandType.PLACE:
+                    return CommandType.NOP;
+                default:
+                    return result;
+            }
         }
 
         private bool ParsePlaceParameters(string parameters)
