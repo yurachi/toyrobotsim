@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
+using NSubstitute.Core.Arguments;
 using Simulator;
 
 namespace Tests
@@ -16,5 +17,29 @@ namespace Tests
             var o = new Simulator.Dispatcher(Substitute.For<IRobot>(), Substitute.For<ICommandParser>());
             Assert.IsNotNull(o);
         }
+
+        [TestMethod]
+        public void TestMainLoopFinishOnEmptyCommandWithoutCallingParser()
+        {
+            var parser = Substitute.For<ICommandParser>();
+            var o = new Simulator.Dispatcher(Substitute.For<IRobot>(), parser);
+            o.ReadLine = () => string.Empty;
+            o.MainLoop();
+            parser.DidNotReceive().Parse(Arg.Any<string>());
+        }
+
+        [TestMethod]
+        public void TestMainLoopCallsParserAndExits()
+        {
+            var parser = Substitute.For<ICommandParser>();
+            var o = new Simulator.Dispatcher(Substitute.For<IRobot>(), parser);
+            var commands = new[] {"LEFT", ""};
+            var i = 0;
+            o.ReadLine = () => commands[i++];
+            o.MainLoop();
+            parser.Received().Parse("LEFT");
+        }
+
+
     }
 }
