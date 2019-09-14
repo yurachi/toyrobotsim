@@ -11,7 +11,10 @@ namespace Simulator
 
         public CommandType Parse(string command)
         {
-            return CommandType.NOP;
+            var splitCommand = command.Split(" ");
+            var result = CommandType.NOP;
+            if (!Enum.TryParse(splitCommand[0], true, out result)) return CommandType.NOP;
+            return result;
         }
 
     }
