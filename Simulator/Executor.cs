@@ -19,6 +19,13 @@
                     Unit.Face = d;
                     break;
 
+                case CommandType.MOVE:
+                    var newX = Unit.X;
+                    var newY = Unit.Y;
+                    Calculator.CalculateMove(ref newX, ref newY, Unit.Face);
+                    Unit.X = newX;
+                    Unit.Y = newY;
+                    break;
             }
         }
     }

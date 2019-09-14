@@ -31,7 +31,7 @@ namespace Tests
 
             robot.Received(1).X = 0;
             robot.Received(1).Y = 1;
-            robot.Received(1).Face = Direction.NORTH;
+            robot.DidNotReceive().Face = Arg.Any<Direction>();
         }
     }
 }
