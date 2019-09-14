@@ -1,3 +1,4 @@
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests
@@ -10,6 +11,18 @@ namespace Tests
         {
             var o = new Simulator.CommandParser();
             Assert.IsNotNull(o);
+        }
+
+        [TestMethod]
+        public void TestEmptyParse()
+        {
+            var o = new Simulator.CommandParser();
+            var command = string.Empty;
+            var expected = Simulator.CommandType.NOP;
+
+            var actual = o.Parse(command);
+
+            Assert.AreEqual(expected, actual);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Simulator
 
         }
 
-        public CommandType Parser(string command)
+        public CommandType Parse(string command)
         {
             return CommandType.NOP;
         }
