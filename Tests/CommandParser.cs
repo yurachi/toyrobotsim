@@ -24,5 +24,17 @@ namespace Tests
 
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void TestInvalidCommand()
+        {
+            var o = new Simulator.CommandParser();
+            var command = "INVALID";
+            var expected = Simulator.CommandType.NOP;
+
+            var actual = o.Parse(command);
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
