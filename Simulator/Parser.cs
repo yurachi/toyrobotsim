@@ -2,7 +2,7 @@
 
 namespace Simulator
 {
-    public class CommandParser : ICommandParser
+    public class Parser : IParser
     {
         public IRobot Unit { get; protected set; }
 
@@ -10,7 +10,7 @@ namespace Simulator
         public int YResult { get; protected set; }
         public Direction DResult { get; protected set; }
 
-        public CommandParser(IRobot r)
+        public Parser(IRobot r)
         {
             this.Unit = r;
         }

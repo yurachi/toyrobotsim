@@ -14,14 +14,14 @@ namespace Tests
         [TestMethod]
         public void TestCreate()
         {
-            var o = new Simulator.Dispatcher(Substitute.For<ICommandParser>(), Substitute.For<IExecutor>());
+            var o = new Simulator.Dispatcher(Substitute.For<IParser>(), Substitute.For<IExecutor>());
             Assert.IsNotNull(o);
         }
 
         [TestMethod]
         public void TestMainLoopFinishOnEmptyCommandWithoutCallingParser()
         {
-            var parser = Substitute.For<ICommandParser>();
+            var parser = Substitute.For<IParser>();
             var o = new Simulator.Dispatcher(parser, Substitute.For<IExecutor>());
             o.ReadLine = () => string.Empty;
             o.MainLoop();
@@ -31,7 +31,7 @@ namespace Tests
         [TestMethod]
         public void TestMainLoopCallsParserAndExits()
         {
-            var parser = Substitute.For<ICommandParser>();
+            var parser = Substitute.For<IParser>();
             var o = new Simulator.Dispatcher(parser, Substitute.For<IExecutor>());
             var commands = new[] {"LEFT", ""};
             var i = 0;

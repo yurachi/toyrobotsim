@@ -6,19 +6,19 @@ using Simulator;
 namespace Tests
 {
     [TestClass]
-    public class CommandParser
+    public class Parser
     {
         [TestMethod]
         public void TestCreate()
         {
-            var o = new Simulator.CommandParser(Substitute.For<IRobot>());
+            var o = new Simulator.Parser(Substitute.For<IRobot>());
             Assert.IsNotNull(o);
         }
 
         [TestMethod]
         public void TestEmptyParse()
         {
-            var o = new Simulator.CommandParser(Substitute.For<IRobot>());
+            var o = new Simulator.Parser(Substitute.For<IRobot>());
             var command = string.Empty;
             var expected = Simulator.CommandType.NOP;
 
@@ -30,7 +30,7 @@ namespace Tests
         [TestMethod]
         public void TestInvalidCommand()
         {
-            var o = new Simulator.CommandParser(Substitute.For<IRobot>());
+            var o = new Simulator.Parser(Substitute.For<IRobot>());
             var command = "INVALID";
             var expected = Simulator.CommandType.NOP;
 
@@ -44,7 +44,7 @@ namespace Tests
         [TestMethod]
         public void TestPlaceCommandWithoutParameters()
         {
-            var o = new Simulator.CommandParser(Substitute.For<IRobot>());
+            var o = new Simulator.Parser(Substitute.For<IRobot>());
             var command = "PLACE";
             var expected = Simulator.CommandType.NOP;
 
@@ -56,7 +56,7 @@ namespace Tests
         [TestMethod]
         public void TestPlaceCommandWithInsufficentParameters()
         {
-            var o = new Simulator.CommandParser(Substitute.For<IRobot>());
+            var o = new Simulator.Parser(Substitute.For<IRobot>());
             var command = "PLACE 0,NORTH";
             var expected = Simulator.CommandType.NOP;
 
@@ -68,7 +68,7 @@ namespace Tests
         [TestMethod]
         public void TestPlaceCommandWithMissingParameters()
         {
-            var o = new Simulator.CommandParser(Substitute.For<IRobot>());
+            var o = new Simulator.Parser(Substitute.For<IRobot>());
             var command = "PLACE 0,,NORTH";
             var expected = Simulator.CommandType.NOP;
 
@@ -80,7 +80,7 @@ namespace Tests
         [TestMethod]
         public void TestPlaceCommandWithWrongOrderParameters()
         {
-            var o = new Simulator.CommandParser(Substitute.For<IRobot>());
+            var o = new Simulator.Parser(Substitute.For<IRobot>());
             var command = "PLACE 0,NORTH,0";
             var expected = Simulator.CommandType.NOP;
 
@@ -92,7 +92,7 @@ namespace Tests
         [TestMethod]
         public void TestPlaceCommandWithInvalidFacing()
         {
-            var o = new Simulator.CommandParser(Substitute.For<IRobot>());
+            var o = new Simulator.Parser(Substitute.For<IRobot>());
             var command = "PLACE 0,0,INVALID";
             var expected = Simulator.CommandType.NOP;
 
@@ -107,7 +107,7 @@ namespace Tests
         [DataRow(5, -20)]
         public void TestPlaceCommandWithIncorrectCoordinates(int x, int y)
         {
-            var o = new Simulator.CommandParser(Substitute.For<IRobot>());
+            var o = new Simulator.Parser(Substitute.For<IRobot>());
             var command = string.Format("PLACE {0},{1},NORTH",x,y);
             var expected = Simulator.CommandType.NOP;
 
@@ -123,7 +123,7 @@ namespace Tests
         [DataRow("5,5,WEST")]
         public void TestValidPlaceCommand(string data)
         {
-            var o = new Simulator.CommandParser(Substitute.For<IRobot>());
+            var o = new Simulator.Parser(Substitute.For<IRobot>());
             var command = "PLACE " + data;
             var expected = Simulator.CommandType.PLACE;
 
@@ -138,7 +138,7 @@ namespace Tests
         [DataRow(5, 5)]
         public void TestPlaceCommandCorrectCoordinates(int x, int y)
         {
-            var o = new Simulator.CommandParser(Substitute.For<IRobot>());
+            var o = new Simulator.Parser(Substitute.For<IRobot>());
             var command = string.Format("PLACE {0},{1},NORTH", x, y);
 
             o.Parse(command);
@@ -154,7 +154,7 @@ namespace Tests
         [DataRow("WEST")]
         public void TestValidPlaceCommandDirection(string data)
         {
-            var o = new Simulator.CommandParser(Substitute.For<IRobot>());
+            var o = new Simulator.Parser(Substitute.For<IRobot>());
             var command = "PLACE 1,1," + data;
 
             o.Parse(command);
@@ -169,7 +169,7 @@ namespace Tests
         [TestMethod]
         public void TestMoveCommandBeforePlaceCommand()
         {
-            var o = new Simulator.CommandParser(Substitute.For<IRobot>());
+            var o = new Simulator.Parser(Substitute.For<IRobot>());
             var command = "MOVE";
             var expected = Simulator.CommandType.NOP;
 
@@ -185,7 +185,7 @@ namespace Tests
             robot.X.Returns(2);
             robot.Y.Returns(2);
             robot.Face.Returns(Direction.EAST);
-            var o = new Simulator.CommandParser(robot);
+            var o = new Simulator.Parser(robot);
             var command = "MOVE";
             var expected = Simulator.CommandType.MOVE;
 

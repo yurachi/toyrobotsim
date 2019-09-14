@@ -1,6 +1,6 @@
 ﻿namespace Simulator
 {
-    public interface ICommandParser
+    public interface IParser
     {
         CommandType Parse(string command);
     }

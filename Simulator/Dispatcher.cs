@@ -6,13 +6,13 @@ namespace Simulator
 {
     public class Dispatcher
     {
-        public ICommandParser Parser { get; private set; }
+        public IParser Parser { get; private set; }
 
         public IExecutor Executor { get; set; }
 
         public Func<string> ReadLine { get; set; }
 
-        public Dispatcher(ICommandParser p, IExecutor e)
+        public Dispatcher(IParser p, IExecutor e)
         {
             this.Parser = p;
             this.Executor = e;
