@@ -44,8 +44,17 @@ namespace Tests
         public void TestProcessCallsExecutorWithParametersForPlace()
         {
             var executor = Substitute.For<IExecutor>();
-            var o = new Simulator.Dispatcher(Substitute.For<IParser>(),executor);
+
+            var parser = Substitute.For<IParser>();
+            parser.Parse("PLACE 0,0,NORTH").Returns(CommandType.PLACE);
+            parser.XResult.Returns(0);
+            parser.YResult.Returns(0);
+            parser.DResult.Returns(Direction.NORTH);
+
+            var o = new Simulator.Dispatcher(parser,executor);
+
             o.Process("PLACE 0,0,NORTH");
+
             executor.Received(1).Execute(CommandType.PLACE,0,0,Direction.NORTH);
         }
     }

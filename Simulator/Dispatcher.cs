@@ -30,8 +30,18 @@ namespace Simulator
         public void Process(string command)
         {
             var c = this.Parser.Parse(command);
-            if (c == CommandType.NOP)
-                return;
+            switch (c)
+            {
+                case CommandType.PLACE:
+                    Executor.Execute(c, this.Parser.XResult, this.Parser.YResult, this.Parser.DResult);
+                    break;
+                case CommandType.NOP:
+                    return;
+                default:
+                    Executor.Execute(c);
+                    break;
+            }
+
         }
 
 
