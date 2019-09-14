@@ -8,7 +8,7 @@ namespace Tests
     public class Executor
     {
         [TestMethod]
-        public void TestExecutorSetsCoordinatesAndDirectionOnPlace()
+        public void TestExecuteSetsCoordinatesAndDirectionOnPlace()
         {
             var robot = Substitute.For<IRobot>();
             var o = new Simulator.Executor(robot);
@@ -19,7 +19,7 @@ namespace Tests
         }
 
         [TestMethod]
-        public void TestExecutorSetsCoordinatesAndNotDirectionOnMove()
+        public void TestExecuteSetsCoordinatesAndNotDirectionOnMove()
         {
             var robot = Substitute.For<IRobot>();
             robot.X.Returns(0);
@@ -31,6 +31,54 @@ namespace Tests
 
             robot.Received(1).X = 0;
             robot.Received(1).Y = 1;
+            robot.DidNotReceive().Face = Arg.Any<Direction>();
+        }
+
+        [TestMethod]
+        public void TestExecuteSetsDirectionAndNotCoordinatesOnLeft()
+        {
+            var robot = Substitute.For<IRobot>();
+            robot.X.Returns(0);
+            robot.Y.Returns(0);
+            robot.Face.Returns(Direction.NORTH);
+            var o = new Simulator.Executor(robot);
+
+            o.Execute(CommandType.LEFT);
+
+            robot.DidNotReceive().X = Arg.Any<int>();
+            robot.DidNotReceive().Y = Arg.Any<int>();
+            robot.Received(1).Face = Direction.WEST;
+        }
+
+        [TestMethod]
+        public void TestExecuteSetsDirectionAndNotCoordinatesOnRight()
+        {
+            var robot = Substitute.For<IRobot>();
+            robot.X.Returns(0);
+            robot.Y.Returns(0);
+            robot.Face.Returns(Direction.NORTH);
+            var o = new Simulator.Executor(robot);
+
+            o.Execute(CommandType.RIGHT);
+
+            robot.DidNotReceive().X = Arg.Any<int>();
+            robot.DidNotReceive().Y = Arg.Any<int>();
+            robot.Received(1).Face = Direction.EAST;
+        }
+
+        [TestMethod]
+        public void TestExecuteNotSetDirectionNorCoordinatesOnReport()
+        {
+            var robot = Substitute.For<IRobot>();
+            robot.X.Returns(0);
+            robot.Y.Returns(0);
+            robot.Face.Returns(Direction.NORTH);
+            var o = new Simulator.Executor(robot);
+
+            o.Execute(CommandType.RIGHT);
+
+            robot.DidNotReceive().X = Arg.Any<int>();
+            robot.DidNotReceive().Y = Arg.Any<int>();
             robot.DidNotReceive().Face = Arg.Any<Direction>();
         }
     }
