@@ -136,7 +136,7 @@ namespace Tests
         {
             var o = new Simulator.CommandParser();
             var command = "MOVE";
-            var expected = Simulator.CommandType.MOVE;
+            var expected = Simulator.CommandType.NOP;
 
             var actual = o.Parse(command);
 
