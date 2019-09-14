@@ -1,3 +1,4 @@
+using System.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Simulator;
@@ -193,13 +194,25 @@ namespace Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        public void TestMoveCommandToMakeRobotFall()
+        [DataTestMethod]
+        [DataRow(0, 0, Direction.SOUTH)]
+        [DataRow(0, 0, Direction.WEST)]
+        [DataRow(0, 3, Direction.WEST)]
+        [DataRow(2, 0, Direction.SOUTH)]
+        [DataRow(0, 5, Direction.NORTH)]
+        [DataRow(0, 5, Direction.WEST)]
+        [DataRow(5, 0, Direction.SOUTH)]
+        [DataRow(5, 0, Direction.EAST)]
+        [DataRow(3, 5, Direction.NORTH)]
+        [DataRow(5, 2, Direction.EAST)]
+        [DataRow(5, 5, Direction.NORTH)]
+        [DataRow(5, 5, Direction.EAST)]
+        public void TestMoveCommandToMakeRobotFall(int x, int y, Direction d)
         {
             var robot = Substitute.For<IRobot>();
-            robot.X.Returns(5);
-            robot.Y.Returns(5);
-            robot.Face.Returns(Direction.EAST);
+            robot.X.Returns(x);
+            robot.Y.Returns(y);
+            robot.Face.Returns(d);
             var o = new Simulator.Parser(robot);
             var command = "MOVE";
             var expected = Simulator.CommandType.NOP;

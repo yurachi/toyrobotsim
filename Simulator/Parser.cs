@@ -24,8 +24,8 @@ namespace Simulator
                 return CommandType.NOP;
             switch (result)
             {
-                case CommandType.MOVE when ValidateMove():
-                    return result;
+                case CommandType.MOVE when !ValidMove():
+                    return CommandType.NOP;
                 case CommandType.PLACE when splitCommand.Length == 2 && ParsePlaceParameters(splitCommand[1]):
                     return result;
                 case CommandType.PLACE:
@@ -67,7 +67,7 @@ namespace Simulator
             return true;
         }
 
-        private bool ValidateMove()
+        private bool ValidMove()
         {
             var newX = Unit.X;
             var newY = Unit.Y;
