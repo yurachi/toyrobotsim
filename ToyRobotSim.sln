@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher", "ToyRobotSim\Launcher.csproj", "{44C0D9B1-2CAB-4ADB-B77F-E7E38ED3D992}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simulator", "Simulator\Simulator.csproj", "{996A0126-A193-4A01-9457-2E22FD90AD0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{F97622D3-C42F-4E75-9DF8-56F40CC99FD9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44C0D9B1-2CAB-4ADB-B77F-E7E38ED3D992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44C0D9B1-2CAB-4ADB-B77F-E7E38ED3D992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44C0D9B1-2CAB-4ADB-B77F-E7E38ED3D992}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44C0D9B1-2CAB-4ADB-B77F-E7E38ED3D992}.Release|Any CPU.Build.0 = Release|Any CPU
+		{996A0126-A193-4A01-9457-2E22FD90AD0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{996A0126-A193-4A01-9457-2E22FD90AD0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{996A0126-A193-4A01-9457-2E22FD90AD0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{996A0126-A193-4A01-9457-2E22FD90AD0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F97622D3-C42F-4E75-9DF8-56F40CC99FD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F97622D3-C42F-4E75-9DF8-56F40CC99FD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F97622D3-C42F-4E75-9DF8-56F40CC99FD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F97622D3-C42F-4E75-9DF8-56F40CC99FD9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9DB8A6AE-8971-42AF-BDBC-3698A0A16830}
+	EndGlobalSection
+EndGlobal
