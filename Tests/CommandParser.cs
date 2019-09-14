@@ -120,8 +120,7 @@ namespace Tests
         [DataRow("0,0,NORTH")]
         [DataRow("0,5,SOUTH")]
         [DataRow("0,1,EAST")]
-        [DataRow("3,2,WEST")]
-        [DataRow("5,5,SOUTH")]
+        [DataRow("5,5,WEST")]
         public void TestValidPlaceCommand(string data)
         {
             var o = new Simulator.CommandParser(Substitute.For<IRobot>());
@@ -131,6 +130,36 @@ namespace Tests
             var actual = o.Parse(command);
 
             Assert.AreEqual(expected, actual);
+        }
+
+        [DataTestMethod]
+        [DataRow(0, 0)]
+        [DataRow(1, 3)]
+        [DataRow(5, 5)]
+        public void TestPlaceCommandCorrectCoordinates(int x, int y)
+        {
+            var o = new Simulator.CommandParser(Substitute.For<IRobot>());
+            var command = string.Format("PLACE {0},{1},NORTH", x, y);
+
+            o.Parse(command);
+
+            Assert.AreEqual(x, o.XResult);
+            Assert.AreEqual(y, o.YResult);
+        }
+
+        [DataTestMethod]
+        [DataRow("NORTH")]
+        [DataRow("SOUTH")]
+        [DataRow("EAST")]
+        [DataRow("WEST")]
+        public void TestValidPlaceCommandDirection(string data)
+        {
+            var o = new Simulator.CommandParser(Substitute.For<IRobot>());
+            var command = "PLACE 1,1," + data;
+
+            o.Parse(command);
+
+            Assert.AreEqual(data, o.DResult.ToString());
         }
 
         #endregion
