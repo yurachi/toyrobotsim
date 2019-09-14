@@ -32,6 +32,21 @@ namespace Simulator
                 return false;
             if (!Enum.TryParse(splitParameters[2], out Direction dResult))
                 return false;
+            if (!ValidXY(xResult, yResult))
+                return false;
+            return true;
+        }
+
+        private bool ValidXY(int x, int y)
+        {
+            if (x < 0)
+                return false;
+            if (y < 0)
+                return false;
+            if (x > 5)
+                return false;
+            if (y > 5)
+                return false;
             return true;
         }
     }
