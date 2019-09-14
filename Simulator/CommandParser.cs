@@ -2,7 +2,7 @@
 
 namespace Simulator
 {
-    public class CommandParser
+    public class CommandParser : ICommandParser
     {
         public CommandParser()
         {

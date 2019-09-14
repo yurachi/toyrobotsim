@@ -6,13 +6,13 @@ namespace Simulator
 {
     public class Dispatcher
     {
-        public Robot Unit { get; set; }
+        public IRobot Unit { get; private set; }
 
-        public CommandParser Parser { get; set; }
+        public ICommandParser Parser { get; private set; }
 
         public Func<string> ReadLine { get; set; }
 
-        public Dispatcher(Robot r, CommandParser p)
+        public Dispatcher(IRobot r, ICommandParser p)
         {
             this.Unit = r;
             this.Parser = p;
@@ -29,7 +29,9 @@ namespace Simulator
 
         public void Process(string command)
         {
-
+            var c = this.Parser.Parse(command);
+            if (c == CommandType.NOP)
+                return;
         }
 
 
