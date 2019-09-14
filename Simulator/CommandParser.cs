@@ -6,6 +6,10 @@ namespace Simulator
     {
         public IRobot Unit { get; protected set; }
 
+        public int XResult { get; protected set; }
+        public int YResult { get; protected set; }
+        public Direction DResult { get; protected set; }
+
         public CommandParser(IRobot r)
         {
             this.Unit = r;
@@ -38,6 +42,9 @@ namespace Simulator
                 return false;
             if (!ValidXY(xResult, yResult))
                 return false;
+            this.XResult = xResult;
+            this.YResult = yResult;
+            this.DResult = dResult;
             return true;
         }
 
