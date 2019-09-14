@@ -1,4 +1,3 @@
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Simulator;
