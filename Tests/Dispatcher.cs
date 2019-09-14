@@ -37,9 +37,16 @@ namespace Tests
             var i = 0;
             o.ReadLine = () => commands[i++];
             o.MainLoop();
-            parser.Received().Parse("LEFT");
+            parser.Received(1).Parse("LEFT");
         }
 
-
+        [TestMethod]
+        public void TestProcessCallsExecutorWithParametersForPlace()
+        {
+            var executor = Substitute.For<IExecutor>();
+            var o = new Simulator.Dispatcher(Substitute.For<IParser>(),executor);
+            o.Process("PLACE 0,0,NORTH");
+            executor.Received(1).Execute(CommandType.PLACE,0,0,Direction.NORTH);
+        }
     }
 }
