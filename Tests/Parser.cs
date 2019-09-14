@@ -193,6 +193,118 @@ namespace Tests
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void TestMoveCommandToMakeRobotFall()
+        {
+            var robot = Substitute.For<IRobot>();
+            robot.X.Returns(5);
+            robot.Y.Returns(5);
+            robot.Face.Returns(Direction.EAST);
+            var o = new Simulator.Parser(robot);
+            var command = "MOVE";
+            var expected = Simulator.CommandType.NOP;
+
+            var actual = o.Parse(command);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        #endregion
+
+        #region LEFT command
+
+        [TestMethod]
+        public void TestLeftCommandBeforePlaceCommand()
+        {
+            var o = new Simulator.Parser(Substitute.For<IRobot>());
+            var command = "LEFT";
+            var expected = Simulator.CommandType.NOP;
+
+            var actual = o.Parse(command);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestLeftCommandOnPlacedRobot()
+        {
+            var robot = Substitute.For<IRobot>();
+            robot.X.Returns(2);
+            robot.Y.Returns(2);
+            robot.Face.Returns(Direction.EAST);
+            var o = new Simulator.Parser(robot);
+            var command = "LEFT";
+            var expected = Simulator.CommandType.LEFT;
+
+            var actual = o.Parse(command);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        #endregion
+
+        #region RIGHT command
+
+        [TestMethod]
+        public void TestRightCommandBeforePlaceCommand()
+        {
+            var o = new Simulator.Parser(Substitute.For<IRobot>());
+            var command = "RIGHT";
+            var expected = Simulator.CommandType.NOP;
+
+            var actual = o.Parse(command);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestRightCommandOnPlacedRobot()
+        {
+            var robot = Substitute.For<IRobot>();
+            robot.X.Returns(2);
+            robot.Y.Returns(2);
+            robot.Face.Returns(Direction.EAST);
+            var o = new Simulator.Parser(robot);
+            var command = "RIGHT";
+            var expected = Simulator.CommandType.LEFT;
+
+            var actual = o.Parse(command);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        #endregion
+
+        #region REPORT command
+
+        [TestMethod]
+        public void TestReportCommandBeforePlaceCommand()
+        {
+            var o = new Simulator.Parser(Substitute.For<IRobot>());
+            var command = "REPORT";
+            var expected = Simulator.CommandType.NOP;
+
+            var actual = o.Parse(command);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestReportCommandOnPlacedRobot()
+        {
+            var robot = Substitute.For<IRobot>();
+            robot.X.Returns(2);
+            robot.Y.Returns(2);
+            robot.Face.Returns(Direction.EAST);
+            var o = new Simulator.Parser(robot);
+            var command = "Report";
+            var expected = Simulator.CommandType.REPORT;
+
+            var actual = o.Parse(command);
+
+            Assert.AreEqual(expected, actual);
+        }
+
         #endregion
     }
 }
