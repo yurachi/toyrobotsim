@@ -4,9 +4,11 @@ namespace Simulator
 {
     public class CommandParser : ICommandParser
     {
-        public CommandParser()
-        {
+        public IRobot Unit { get; protected set; }
 
+        public CommandParser(IRobot r)
+        {
+            this.Unit = r;
         }
 
         public CommandType Parse(string command)
