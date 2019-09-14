@@ -37,6 +37,8 @@ namespace Tests
             Assert.AreEqual(expected, actual);
         }
 
+        #region PLACE command
+
         [TestMethod]
         public void TestPlaceCommandWithoutParameters()
         {
@@ -96,5 +98,20 @@ namespace Tests
 
             Assert.AreEqual(expected, actual);
         }
+
+        [DataTestMethod]
+        [DataRow("0,0,NORTH")]
+        public void TestValidPlaceCommand(string data)
+        {
+            var o = new Simulator.CommandParser();
+            var command = "PLACE " + data;
+            var expected = Simulator.CommandType.PLACE;
+
+            var actual = o.Parse(command);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        #endregion
     }
 }
