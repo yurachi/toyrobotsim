@@ -65,21 +65,7 @@ namespace Simulator
         {
             var newX = Unit.X;
             var newY = Unit.Y;
-            switch (Unit.Face)
-            {
-                case Direction.EAST:
-                    ++newX;
-                    break;
-                case Direction.SOUTH:
-                    --newY;
-                    break;
-                case Direction.WEST:
-                    --newX;
-                    break;
-                case Direction.NORTH:
-                    ++newY;
-                    break;
-            }
+            Calculator.CalculateMove(ref newX, ref newY, Unit.Face);
             return ValidXY(newX, newY);
         }
     }
