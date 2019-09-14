@@ -14,7 +14,7 @@ namespace Tests
         [TestMethod]
         public void TestCreate()
         {
-            var o = new Simulator.Dispatcher(Substitute.For<IRobot>(), Substitute.For<ICommandParser>());
+            var o = new Simulator.Dispatcher(Substitute.For<ICommandParser>(), Substitute.For<IExecutor>());
             Assert.IsNotNull(o);
         }
 
@@ -22,7 +22,7 @@ namespace Tests
         public void TestMainLoopFinishOnEmptyCommandWithoutCallingParser()
         {
             var parser = Substitute.For<ICommandParser>();
-            var o = new Simulator.Dispatcher(Substitute.For<IRobot>(), parser);
+            var o = new Simulator.Dispatcher(parser, Substitute.For<IExecutor>());
             o.ReadLine = () => string.Empty;
             o.MainLoop();
             parser.DidNotReceive().Parse(Arg.Any<string>());
@@ -32,7 +32,7 @@ namespace Tests
         public void TestMainLoopCallsParserAndExits()
         {
             var parser = Substitute.For<ICommandParser>();
-            var o = new Simulator.Dispatcher(Substitute.For<IRobot>(), parser);
+            var o = new Simulator.Dispatcher(parser, Substitute.For<IExecutor>());
             var commands = new[] {"LEFT", ""};
             var i = 0;
             o.ReadLine = () => commands[i++];

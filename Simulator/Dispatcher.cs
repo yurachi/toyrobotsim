@@ -6,17 +6,14 @@ namespace Simulator
 {
     public class Dispatcher
     {
-        public IRobot Unit { get; private set; }
-
         public ICommandParser Parser { get; private set; }
 
         public IExecutor Executor { get; set; }
 
         public Func<string> ReadLine { get; set; }
 
-        public Dispatcher(IRobot r, ICommandParser p, IExecutor e)
+        public Dispatcher(ICommandParser p, IExecutor e)
         {
-            this.Unit = r;
             this.Parser = p;
             this.Executor = e;
             this.ReadLine = Console.ReadLine;
