@@ -10,6 +10,5 @@ namespace Simulator
         public int X { get; set; }
         public int Y { get; set; }
         public Direction Face { get; set; }
-        public bool IsPlaced { get; set; }
     }
 }
