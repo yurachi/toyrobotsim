@@ -118,6 +118,10 @@ namespace Tests
 
         [DataTestMethod]
         [DataRow("0,0,NORTH")]
+        [DataRow("0,5,SOUTH")]
+        [DataRow("0,1,EAST")]
+        [DataRow("3,2,WEST")]
+        [DataRow("5,5,SOUTH")]
         public void TestValidPlaceCommand(string data)
         {
             var o = new Simulator.CommandParser(Substitute.For<IRobot>());
