@@ -16,9 +16,11 @@ namespace Simulator
             var splitCommand = command.Split(" ");
             if (!Enum.TryParse(splitCommand[0], true, out CommandType result))
                 return CommandType.NOP;
-            if (result != CommandType.PLACE)
+            if (result != CommandType.PLACE && Unit.Face == Direction.NONE)
+                return CommandType.NOP;
+            if (result == CommandType.MOVE && ValidateMove())
                 return result;
-            if (splitCommand.Length == 2 && ParsePlaceParameters(splitCommand[1]))
+            if (result == CommandType.PLACE && splitCommand.Length == 2 && ParsePlaceParameters(splitCommand[1]))
                 return result;
             return CommandType.NOP;
         }
@@ -50,6 +52,28 @@ namespace Simulator
             if (y > 5)
                 return false;
             return true;
+        }
+
+        private bool ValidateMove()
+        {
+            var newX = Unit.X;
+            var newY = Unit.Y;
+            switch (Unit.Face)
+            {
+                case Direction.EAST:
+                    ++newX;
+                    break;
+                case Direction.SOUTH:
+                    --newY;
+                    break;
+                case Direction.WEST:
+                    --newX;
+                    break;
+                case Direction.NORTH:
+                    ++newY;
+                    break;
+            }
+            return ValidXY(newX, newY);
         }
     }
 }

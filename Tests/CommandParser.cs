@@ -145,6 +145,21 @@ namespace Tests
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void TestMoveCommandOnPlacedRobot()
+        {
+            var robot = Substitute.For<IRobot>();
+            robot.X.Returns(2);
+            robot.Y.Returns(2);
+            robot.Face.Returns(Direction.EAST);
+            var o = new Simulator.CommandParser(robot);
+            var command = "MOVE";
+            var expected = Simulator.CommandType.MOVE;
+
+            var actual = o.Parse(command);
+
+            Assert.AreEqual(expected, actual);
+        }
 
         #endregion
     }
