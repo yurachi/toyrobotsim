@@ -266,7 +266,7 @@ namespace Tests
             robot.Face.Returns(Direction.EAST);
             var o = new Simulator.Parser(robot);
             var command = "RIGHT";
-            var expected = Simulator.CommandType.LEFT;
+            var expected = Simulator.CommandType.RIGHT;
 
             var actual = o.Parse(command);
 
