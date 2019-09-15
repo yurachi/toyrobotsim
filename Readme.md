@@ -17,6 +17,7 @@ dimensions 5 units x 5 units.
 
         NORTH     (4,4)
 
+|   |   |   |   |   |
 |---|---|---|---|---|
 |   |   |   |   |   |
 |   |   |   |   |   |
@@ -61,6 +62,7 @@ placement of the toy robot.
 Here is some example input and output:
 
 1. One move
+
    PLACE 0,0,NORTH
    MOVE
    REPORT
@@ -68,6 +70,7 @@ Here is some example input and output:
    Output: 0,1,NORTH
 
 2. One turn
+
    PLACE 0,0,NORTH
    LEFT
    REPORT
@@ -75,6 +78,7 @@ Here is some example input and output:
    Output: 0,0,WEST
 
 3. Combination of moves and turn
+
    PLACE 1,2,EAST
    MOVE
    MOVE
