@@ -75,7 +75,7 @@ namespace Tests
             robot.FacingDirection.Returns(Direction.NORTH);
             var o = new Simulator.Executor(robot);
 
-            o.Execute(CommandType.RIGHT);
+            o.Execute(CommandType.REPORT);
 
             robot.DidNotReceive().X = Arg.Any<int>();
             robot.DidNotReceive().Y = Arg.Any<int>();
