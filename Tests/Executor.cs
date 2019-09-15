@@ -15,7 +15,7 @@ namespace Tests
             o.Execute(CommandType.PLACE,0,0,Direction.NORTH);
             robot.Received(1).X = 0;
             robot.Received(1).Y = 0;
-            robot.Received(1).Face = Direction.NORTH;
+            robot.Received(1).FacingDirection = Direction.NORTH;
         }
 
         [TestMethod]
@@ -24,14 +24,14 @@ namespace Tests
             var robot = Substitute.For<IRobot>();
             robot.X.Returns(0);
             robot.Y.Returns(0);
-            robot.Face.Returns(Direction.NORTH);
+            robot.FacingDirection.Returns(Direction.NORTH);
             var o = new Simulator.Executor(robot);
 
             o.Execute(CommandType.MOVE);
 
             robot.Received(1).X = 0;
             robot.Received(1).Y = 1;
-            robot.DidNotReceive().Face = Arg.Any<Direction>();
+            robot.DidNotReceive().FacingDirection = Arg.Any<Direction>();
         }
 
         [TestMethod]
@@ -40,14 +40,14 @@ namespace Tests
             var robot = Substitute.For<IRobot>();
             robot.X.Returns(0);
             robot.Y.Returns(0);
-            robot.Face.Returns(Direction.NORTH);
+            robot.FacingDirection.Returns(Direction.NORTH);
             var o = new Simulator.Executor(robot);
 
             o.Execute(CommandType.LEFT);
 
             robot.DidNotReceive().X = Arg.Any<int>();
             robot.DidNotReceive().Y = Arg.Any<int>();
-            robot.Received(1).Face = Direction.WEST;
+            robot.Received(1).FacingDirection = Direction.WEST;
         }
 
         [TestMethod]
@@ -56,14 +56,14 @@ namespace Tests
             var robot = Substitute.For<IRobot>();
             robot.X.Returns(0);
             robot.Y.Returns(0);
-            robot.Face.Returns(Direction.NORTH);
+            robot.FacingDirection.Returns(Direction.NORTH);
             var o = new Simulator.Executor(robot);
 
             o.Execute(CommandType.RIGHT);
 
             robot.DidNotReceive().X = Arg.Any<int>();
             robot.DidNotReceive().Y = Arg.Any<int>();
-            robot.Received(1).Face = Direction.EAST;
+            robot.Received(1).FacingDirection = Direction.EAST;
         }
 
         [TestMethod]
@@ -72,14 +72,14 @@ namespace Tests
             var robot = Substitute.For<IRobot>();
             robot.X.Returns(0);
             robot.Y.Returns(0);
-            robot.Face.Returns(Direction.NORTH);
+            robot.FacingDirection.Returns(Direction.NORTH);
             var o = new Simulator.Executor(robot);
 
             o.Execute(CommandType.RIGHT);
 
             robot.DidNotReceive().X = Arg.Any<int>();
             robot.DidNotReceive().Y = Arg.Any<int>();
-            robot.DidNotReceive().Face = Arg.Any<Direction>();
+            robot.DidNotReceive().FacingDirection = Arg.Any<Direction>();
         }
     }
 }

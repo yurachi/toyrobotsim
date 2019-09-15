@@ -16,27 +16,27 @@
                 case CommandType.PLACE:
                     Unit.X = x;
                     Unit.Y = y;
-                    Unit.Face = d;
+                    Unit.FacingDirection = d;
                     break;
 
                 case CommandType.MOVE:
                     var newX = Unit.X;
                     var newY = Unit.Y;
-                    Calculator.CalculateMove(ref newX, ref newY, Unit.Face);
+                    Calculator.CalculateMove(ref newX, ref newY, Unit.FacingDirection);
                     Unit.X = newX;
                     Unit.Y = newY;
                     break;
 
                 case CommandType.LEFT:
-                    var newDirection = Unit.Face;
+                    var newDirection = Unit.FacingDirection;
                     Calculator.CalculateTurn(ref newDirection, CommandType.LEFT);
-                    Unit.Face = newDirection;
+                    Unit.FacingDirection = newDirection;
                     break;
 
                 case CommandType.RIGHT:
-                    newDirection = Unit.Face;
+                    newDirection = Unit.FacingDirection;
                     Calculator.CalculateTurn(ref newDirection, CommandType.RIGHT);
-                    Unit.Face = newDirection;
+                    Unit.FacingDirection = newDirection;
                     break;
 
             }

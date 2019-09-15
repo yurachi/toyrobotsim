@@ -184,7 +184,7 @@ namespace Tests
             var robot = Substitute.For<IRobot>();
             robot.X.Returns(2);
             robot.Y.Returns(2);
-            robot.Face.Returns(Direction.EAST);
+            robot.FacingDirection.Returns(Direction.EAST);
             var o = new Simulator.Parser(robot);
             var command = "MOVE";
             var expected = Simulator.CommandType.MOVE;
@@ -212,7 +212,7 @@ namespace Tests
             var robot = Substitute.For<IRobot>();
             robot.X.Returns(x);
             robot.Y.Returns(y);
-            robot.Face.Returns(d);
+            robot.FacingDirection.Returns(d);
             var o = new Simulator.Parser(robot);
             var command = "MOVE";
             var expected = Simulator.CommandType.NOP;
@@ -244,7 +244,7 @@ namespace Tests
             var robot = Substitute.For<IRobot>();
             robot.X.Returns(2);
             robot.Y.Returns(2);
-            robot.Face.Returns(Direction.EAST);
+            robot.FacingDirection.Returns(Direction.EAST);
             var o = new Simulator.Parser(robot);
             var command = "LEFT";
             var expected = Simulator.CommandType.LEFT;
@@ -276,7 +276,7 @@ namespace Tests
             var robot = Substitute.For<IRobot>();
             robot.X.Returns(2);
             robot.Y.Returns(2);
-            robot.Face.Returns(Direction.EAST);
+            robot.FacingDirection.Returns(Direction.EAST);
             var o = new Simulator.Parser(robot);
             var command = "RIGHT";
             var expected = Simulator.CommandType.RIGHT;
@@ -308,7 +308,7 @@ namespace Tests
             var robot = Substitute.For<IRobot>();
             robot.X.Returns(2);
             robot.Y.Returns(2);
-            robot.Face.Returns(Direction.EAST);
+            robot.FacingDirection.Returns(Direction.EAST);
             var o = new Simulator.Parser(robot);
             var command = "Report";
             var expected = Simulator.CommandType.REPORT;

@@ -20,7 +20,7 @@ namespace Simulator
             var splitCommand = command.Split(" ");
             if (!Enum.TryParse(splitCommand[0], true, out CommandType result))
                 return CommandType.NOP;
-            if (result != CommandType.PLACE && Unit.Face == Direction.NONE)
+            if (result != CommandType.PLACE && Unit.FacingDirection == Direction.NONE)
                 return CommandType.NOP;
             switch (result)
             {
@@ -71,7 +71,7 @@ namespace Simulator
         {
             var newX = Unit.X;
             var newY = Unit.Y;
-            Calculator.CalculateMove(ref newX, ref newY, Unit.Face);
+            Calculator.CalculateMove(ref newX, ref newY, Unit.FacingDirection);
             return ValidXY(newX, newY);
         }
     }

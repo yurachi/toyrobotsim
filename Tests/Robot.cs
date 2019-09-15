@@ -17,7 +17,7 @@ namespace Tests
         public void TestNewRobotHasNoDirection()
         {
             var o = new Simulator.Robot();
-            Assert.AreEqual(o.Face, Direction.NONE);
+            Assert.AreEqual(o.FacingDirection, Direction.NONE);
         }
     }
 }

@@ -4,6 +4,6 @@
     {
         int X { get; set; }
         int Y { get; set; }
-        Direction Face { get; set; }
+        Direction FacingDirection { get; set; }
     }
 }
