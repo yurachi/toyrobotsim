@@ -21,9 +21,12 @@
             }
         }
 
-        public static void CalculateTurn(ref Direction newDirection, CommandType left)
+        public static void CalculateTurn(ref Direction newDirection, CommandType leftOrRight)
         {
-            throw new System.NotImplementedException();
+            var delta = (leftOrRight == CommandType.LEFT) ? -1 : 1;
+            var result = ((int)newDirection + delta) % 4;
+            if (result == 0) result = 4;
+            newDirection = (Direction) result;
         }
     }
 }
