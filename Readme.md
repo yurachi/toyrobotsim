@@ -3,7 +3,9 @@
 
 We use this test as an indication of the kind of code that a candidate would write on a day to
 day basis, so please take your time and submit representative code.
+
 Using C#, design and code up a Toy Robot Simulator. Your code must include unit tests.
+
 Host your code on Github and send in your repo URL for review. When setting up the repo,
 structure it such that it will be used as a working repo in the future. You should aim to deliver
 production ready code, and your repository should be structured as you would if you were
@@ -12,6 +14,7 @@ setting up a real repository.
 ## Description
 - The application is a simulation of a toy robot moving on a square tabletop, of
 dimensions 5 units x 5 units.
+
             NORTH     (4,4)
     |---|---|---|---|---|
     |---|---|---|---|---|
@@ -19,6 +22,7 @@ WEST|---|---|---|---|---|EAST
     |---|---|---|---|---|
     |---|---|---|---|---|
   (0,0)     SOUTH
+
 - There are no other obstructions on the table surface.
 - The robot is free to roam around the surface of the table, but must be prevented from
 falling to destruction. Any movement that would result in the robot falling from the
@@ -53,17 +57,17 @@ placement of the toy robot.
 - Any move that would cause the robot to fall must be ignored.
 
 Here is some example input and output:
-a)
+1.
 PLACE 0,0,NORTH
 MOVE
 REPORT
 Output: 0,1,NORTH
-b)
+2.
 PLACE 0,0,NORTH
 LEFT
 REPORT
 Output: 0,0,WEST
-c)
+3.
 PLACE 1,2,EAST
 MOVE
 MOVE
