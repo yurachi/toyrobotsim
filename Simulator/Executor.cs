@@ -39,6 +39,8 @@
                     Unit.FacingDirection = newDirection;
                     break;
 
+                case CommandType.REPORT:
+
             }
         }
     }

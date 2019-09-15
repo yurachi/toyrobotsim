@@ -104,7 +104,7 @@ namespace Tests
         [DataTestMethod]
         [DataRow(-1, 0)]
         [DataRow(1, 10)]
-        [DataRow(5, -20)]
+        [DataRow(4, -20)]
         public void TestPlaceCommandWithIncorrectCoordinates(int x, int y)
         {
             var o = new Simulator.Parser(Substitute.For<IRobot>());
@@ -118,9 +118,9 @@ namespace Tests
 
         [DataTestMethod]
         [DataRow("0,0,NORTH")]
-        [DataRow("0,5,SOUTH")]
+        [DataRow("0,4,SOUTH")]
         [DataRow("0,1,EAST")]
-        [DataRow("5,5,WEST")]
+        [DataRow("4,4,WEST")]
         public void TestValidPlaceCommand(string data)
         {
             var o = new Simulator.Parser(Substitute.For<IRobot>());
@@ -135,7 +135,7 @@ namespace Tests
         [DataTestMethod]
         [DataRow(0, 0)]
         [DataRow(1, 3)]
-        [DataRow(5, 5)]
+        [DataRow(4, 4)]
         public void TestPlaceCommandCorrectCoordinates(int x, int y)
         {
             var o = new Simulator.Parser(Substitute.For<IRobot>());
@@ -199,14 +199,14 @@ namespace Tests
         [DataRow(0, 0, Direction.WEST)]
         [DataRow(0, 3, Direction.WEST)]
         [DataRow(2, 0, Direction.SOUTH)]
-        [DataRow(0, 5, Direction.NORTH)]
-        [DataRow(0, 5, Direction.WEST)]
-        [DataRow(5, 0, Direction.SOUTH)]
-        [DataRow(5, 0, Direction.EAST)]
-        [DataRow(3, 5, Direction.NORTH)]
-        [DataRow(5, 2, Direction.EAST)]
-        [DataRow(5, 5, Direction.NORTH)]
-        [DataRow(5, 5, Direction.EAST)]
+        [DataRow(0, 4, Direction.NORTH)]
+        [DataRow(0, 4, Direction.WEST)]
+        [DataRow(4, 0, Direction.SOUTH)]
+        [DataRow(4, 0, Direction.EAST)]
+        [DataRow(3, 4, Direction.NORTH)]
+        [DataRow(4, 2, Direction.EAST)]
+        [DataRow(4, 4, Direction.NORTH)]
+        [DataRow(4, 4, Direction.EAST)]
         public void TestMoveCommandToMakeRobotFall(int x, int y, Direction d)
         {
             var robot = Substitute.For<IRobot>();

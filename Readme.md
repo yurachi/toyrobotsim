@@ -12,7 +12,7 @@ setting up a real repository.
 ## Description
 - The application is a simulation of a toy robot moving on a square tabletop, of
 dimensions 5 units x 5 units.
-            NORTH     (5,5)
+            NORTH     (4,4)
     |---|---|---|---|---|
     |---|---|---|---|---|
 WEST|---|---|---|---|---|EAST

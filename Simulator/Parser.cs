@@ -60,9 +60,9 @@ namespace Simulator
                 return false;
             if (y < 0)
                 return false;
-            if (x > 5)
+            if (x > 4)
                 return false;
-            if (y > 5)
+            if (y > 4)
                 return false;
             return true;
         }
