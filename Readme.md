@@ -18,10 +18,10 @@ dimensions 5 units x 5 units.
         NORTH     (4,4)
 
 |---|---|---|---|---|
-||||||
-||||||
-||||||
-||||||
+|   |   |   |   |   |
+|   |   |   |   |   |
+|   |   |   |   |   |
+|   |   |   |   |   |
 
 (0,0)     SOUTH
 
@@ -59,19 +59,22 @@ placement of the toy robot.
 - Any move that would cause the robot to fall must be ignored.
 
 Here is some example input and output:
-1.
+
+1. One move
    PLACE 0,0,NORTH
    MOVE
    REPORT
 
    Output: 0,1,NORTH
-2.
+
+2. One turn
    PLACE 0,0,NORTH
    LEFT
    REPORT
 
    Output: 0,0,WEST
-3.
+
+3. Combination of moves and turn
    PLACE 1,2,EAST
    MOVE
    MOVE
