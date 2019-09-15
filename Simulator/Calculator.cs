@@ -20,5 +20,10 @@
                     break;
             }
         }
+
+        public static void CalculateTurn(ref Direction newDirection, CommandType left)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

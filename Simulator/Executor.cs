@@ -26,6 +26,19 @@
                     Unit.X = newX;
                     Unit.Y = newY;
                     break;
+
+                case CommandType.LEFT:
+                    var newDirection = Unit.Face;
+                    Calculator.CalculateTurn(ref newDirection, CommandType.LEFT);
+                    Unit.Face = newDirection;
+                    break;
+
+                case CommandType.RIGHT:
+                    newDirection = Unit.Face;
+                    Calculator.CalculateTurn(ref newDirection, CommandType.RIGHT);
+                    Unit.Face = newDirection;
+                    break;
+
             }
         }
     }
