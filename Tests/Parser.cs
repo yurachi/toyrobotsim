@@ -1,4 +1,3 @@
-using System.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Simulator;

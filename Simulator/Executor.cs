@@ -1,12 +1,17 @@
-﻿namespace Simulator
+﻿using System;
+
+namespace Simulator
 {
     public class Executor : IExecutor
     {
         public IRobot Unit { get; protected set; }
 
+        public Action<string> WriteLine { get; set; }
+
         public Executor(IRobot r)
         {
             this.Unit = r;
+            this.WriteLine = Console.WriteLine;
         }
 
         public void Execute(CommandType command, int x = -1, int y = -1, Direction d = Direction.NONE)
@@ -40,7 +45,8 @@
                     break;
 
                 case CommandType.REPORT:
-
+                    this.WriteLine($"{Unit.X},{Unit.Y},{Unit.FacingDirection}");
+                    break;
             }
         }
     }

@@ -81,5 +81,22 @@ namespace Tests
             robot.DidNotReceive().Y = Arg.Any<int>();
             robot.DidNotReceive().FacingDirection = Arg.Any<Direction>();
         }
+
+        [TestMethod]
+        public void TestExecuteReport()
+        {
+            var robot = Substitute.For<IRobot>();
+            robot.X.Returns(0);
+            robot.Y.Returns(0);
+            robot.FacingDirection.Returns(Direction.NORTH);
+            var o = new Simulator.Executor(robot);
+            var actual = string.Empty;
+            var expected = "0,0,NORTH";
+            o.WriteLine = (s) => actual = s;
+
+            o.Execute(CommandType.REPORT);
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
