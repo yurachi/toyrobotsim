@@ -4,8 +4,8 @@
     {
         NONE,
         NORTH,
-        SOUTH,
         EAST,
+        SOUTH,
         WEST
     }
 }
