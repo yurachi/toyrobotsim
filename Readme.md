@@ -64,7 +64,9 @@ Here is some example input and output:
 1. One move
 
    PLACE 0,0,NORTH
+
    MOVE
+
    REPORT
 
    Output: 0,1,NORTH
@@ -72,7 +74,9 @@ Here is some example input and output:
 2. One turn
 
    PLACE 0,0,NORTH
+
    LEFT
+
    REPORT
 
    Output: 0,0,WEST
@@ -80,10 +84,15 @@ Here is some example input and output:
 3. Combination of moves and turn
 
    PLACE 1,2,EAST
+
    MOVE
+
    MOVE
+
    LEFT
+
    MOVE
+
    REPORT
 
    Output: 3,3,NORTH
