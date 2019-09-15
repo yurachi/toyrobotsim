@@ -15,13 +15,15 @@ setting up a real repository.
 - The application is a simulation of a toy robot moving on a square tabletop, of
 dimensions 5 units x 5 units.
 
-            NORTH     (4,4)
-    |---|---|---|---|---|
-    |---|---|---|---|---|
-WEST|---|---|---|---|---|EAST
-    |---|---|---|---|---|
-    |---|---|---|---|---|
-  (0,0)     SOUTH
+        NORTH     (4,4)
+
+|---|---|---|---|---|
+||||||
+||||||
+||||||
+||||||
+
+(0,0)     SOUTH
 
 - There are no other obstructions on the table surface.
 - The robot is free to roam around the surface of the table, but must be prevented from
@@ -58,20 +60,23 @@ placement of the toy robot.
 
 Here is some example input and output:
 1.
-PLACE 0,0,NORTH
-MOVE
-REPORT
-Output: 0,1,NORTH
+   PLACE 0,0,NORTH
+   MOVE
+   REPORT
+
+   Output: 0,1,NORTH
 2.
-PLACE 0,0,NORTH
-LEFT
-REPORT
-Output: 0,0,WEST
+   PLACE 0,0,NORTH
+   LEFT
+   REPORT
+
+   Output: 0,0,WEST
 3.
-PLACE 1,2,EAST
-MOVE
-MOVE
-LEFT
-MOVE
-REPORT
-Output: 3,3,NORTH
+   PLACE 1,2,EAST
+   MOVE
+   MOVE
+   LEFT
+   MOVE
+   REPORT
+
+   Output: 3,3,NORTH
